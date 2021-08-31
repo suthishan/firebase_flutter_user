@@ -5,9 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_firebase_task/UI/addUser/adduser.dart';
 import 'package:flutter_firebase_task/constants/AppConstants.dart';
-import 'package:flutter_firebase_task/model/adduser.dart';
+import 'package:flutter_firebase_task/model/addnotes.dart';
 import 'package:flutter_firebase_task/model/user.dart';
 import 'package:flutter_firebase_task/services/helper.dart';
 

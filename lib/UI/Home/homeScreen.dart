@@ -4,8 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_task/UI/addUser/adduser.dart';
+import 'package:flutter_firebase_task/UI/addNotes/addscreen.dart';
 import 'package:flutter_firebase_task/UI/auth/authScreen.dart';
+import 'package:flutter_firebase_task/UI/widgets/item_list.dart';
 import 'package:flutter_firebase_task/constants/AppConstants.dart';
 import 'package:flutter_firebase_task/main.dart';
 import 'package:flutter_firebase_task/model/user.dart';
@@ -72,6 +73,21 @@ class _HomeState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddScreen(),
+            ),
+          );
+        },
+        backgroundColor: Color(COLOR_PRIMARY),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 32,
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -121,31 +137,41 @@ class _HomeState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(minWidth: double.infinity),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(COLOR_PRIMARY),
-                    textStyle: TextStyle(color: Colors.white),
-                    padding: EdgeInsets.only(top: 12, bottom: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      side: BorderSide(
-                        color: Color(COLOR_PRIMARY),
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'Add User',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () => push(
-                    context,
-                    new AddUser(),
-                  ),
+            // Padding(
+            //   padding: const EdgeInsets.only(right: 40.0, left: 40.0, top: 40),
+            //   child: ConstrainedBox(
+            //     constraints: const BoxConstraints(minWidth: double.infinity),
+            //     child: ElevatedButton(
+            //       style: ElevatedButton.styleFrom(
+            //         primary: Color(COLOR_PRIMARY),
+            //         textStyle: TextStyle(color: Colors.white),
+            //         padding: EdgeInsets.only(top: 12, bottom: 12),
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(25.0),
+            //           side: BorderSide(
+            //             color: Color(COLOR_PRIMARY),
+            //           ),
+            //         ),
+            //       ),
+            //       child: Text(
+            //         'Add User',
+            //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            //       ),
+            //       onPressed: () => push(
+            //         context,
+            //         new AddUser(),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  bottom: 20.0,
                 ),
+                child: ItemList(),
               ),
             ),
           ],
